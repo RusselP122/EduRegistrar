@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+# In public/.htaccess
+RewriteEngine On
+RewriteBase /EduRegistrar/public/
+
+# Handle API routes first
+RewriteRule ^api/(.*)$ index.php?api_route=$1 [QSA,L,NC]
+
+# Existing rules...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
+</IfModule>
